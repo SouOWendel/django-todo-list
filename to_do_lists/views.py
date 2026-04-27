@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import TarefaForm
 from .models import Tarefa
 
@@ -16,13 +16,26 @@ def index(request):
 		else:
 			tarefasConcluidas = None
 			tarefasNaoConcluidas = None
-		form = TarefaForm()
-		context = {
-			'message': 'Hello, world!',
-			'form': form,
-			'tarefasConcluidas': tarefasConcluidas,
-			'tarefasNaoConcluidas': tarefasNaoConcluidas,
-		}
-		return render(request, 'to_do_lists/index.html', context)
+
+		if request.method == 'POST':
+			form = TarefaForm(request.POST)
+			if form.is_valid(): # Confere se há erros.
+				usuario = request.user
+				tarefa = form.cleaned_data['tarefa']
+				concluido = False
+				novaTarefa = Tarefa.objects.create(
+					user=usuario, tarefa=tarefa, concluido=concluido
+				)
+				novaTarefa.save()
+				return redirect('index')
+		else:
+			form = TarefaForm()
+			
+			context = {
+				'form': form,
+				'tarefasConcluidas': tarefasConcluidas,
+				'tarefasNaoConcluidas': tarefasNaoConcluidas,
+			}
+			return render(request, 'to_do_lists/index.html', context)
 	else:
 		return render(request, 'to_do_lists/index.html')
