@@ -1,0 +1,18 @@
+{% load tailwind_tags %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Lista de Tarefas</title>
+    
+    <!-- Esta tag injeta o CSS gerado pelo Tailwind -->
+    {% tailwind_css %}
+</head>
+<body class="p-8">
+    
+    <!-- Seu código usando classes do Tailwind -->
+    <p class="text-2xl text-blue-600 font-bold">{{ message }}</p>
+
+</body>
+</html>
