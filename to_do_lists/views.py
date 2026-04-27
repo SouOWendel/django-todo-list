@@ -20,6 +20,8 @@ def index(request):
 		context = {
 			'message': 'Hello, world!',
 			'form': form,
+			'tarefasConcluidas': tarefasConcluidas,
+			'tarefasNaoConcluidas': tarefasNaoConcluidas,
 		}
 		return render(request, 'to_do_lists/index.html', context)
 	else:
