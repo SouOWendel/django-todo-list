@@ -12,6 +12,32 @@
 		</div>
 		<button type="submit">Cadastrar</button>
 	</form>
+	<div>
+		<div>
+			{% if tarefasNaoConcluidas %}
+				{% for tarefa in tarefasNaoConcluidas %}
+					<div>
+						<span id="">{{ tarefa }}</span>
+						<a href="#" class="">Concluir</a>
+						<a href="#" class="">Excluir</a>
+					</div>
+				{% endfor %}
+			{% else %}
+				<p>Não há tarefas cadastradas.</p>
+			{% endif %}
+		</div>
+		<div>
+			{% if tarefasConcluidas %}
+				{% for tarefa in TarefasConcluidas %}
+					<div>
+						<span id="">{{ tarefa }}</span>
+					</div>
+				{% endfor %}
+			{% else %}
+				<p>Não há tarefas concluidas.</p>
+			{% endif %}
+		</div>
+	</div>
 	{% else %}
 		<a href="{% url 'index' %}" class="">Clique aqui para criar uma tarefa!</a>
 	{% endif %}
