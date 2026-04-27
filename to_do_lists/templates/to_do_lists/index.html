@@ -1,5 +1,18 @@
 {% extends "to_do_lists/base.html" %}
 
 {% block content %}
-	{{ message }}
+
+	{% if user.is_authenticated %}
+	<form method="POST" class="shadow mt-3 p-3">
+		{% comment %} Tag de Segurança do Django {% endcomment %}
+		{% csrf_token %}
+		<div class="mb-3">
+			<label for="id_tarefa" class="">Qualquer</label>
+			{{ form.tarefa }}
+		</div>
+		<button type="submit">Cadastrar</button>
+	</form>
+	{% else %}
+		<a href="{% url 'index' %}" class="">Clique aqui para criar uma tarefa!</a>
+	{% endif %}
 {% endblock %}
