@@ -1,0 +1,31 @@
+{% extends "to_do_lists/base.html" %}
+
+{% block content %}
+
+<div>
+	<form method="post">
+		{% csrf_token %}
+
+		{% if form.errors %}
+			{% for field, errors in form.errors.items %}
+				<p>{{ field }}: {{ errors|join:", " }}</p>
+			{% endfor %}
+		{% endif %}
+
+		<div class="">
+				<label for="{{ form.old_password.id_for_label }}">{{ form.old_password.label }}</label>
+				{{ form.old_password }}
+		</div>
+		<div class="">
+				<label for="{{ form.new_password1.id_for_label }}">{{ form.new_password1.label }}</label>
+				{{ form.new_password1 }}
+		</div>
+		<div class="">
+				<label for="{{ form.new_password2.id_for_label }}">{{ form.new_password2.label }}</label>
+				{{ form.new_password2 }}
+		</div>
+		<button type="submit">Alterar Senha</button>
+	</form>
+</div>
+
+{% endblock %}
