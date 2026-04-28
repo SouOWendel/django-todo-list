@@ -13,7 +13,8 @@ Para executar um servidor de desenvolvimento do Django: python manage.py runserv
 
 Pode-se utiliza a extensão Database Client para gerenciar as tabelas do SGBD SQLite.
 
-Neste projeto para criar um APP, usa-se python manage.py startapp (nome do projeto)
+Neste projeto para criar um APP, usa-se python manage.py startapp (nome_do_app)
+*Lembrete: Após criar um app, é necessário adicioná-logo no array `INSTALLED_APPS` dentro do arquivo `settings.py`.*
 
 Para iniciar o servidor Django: python manage.py runserver
 Para iniciar o Tailwind Watcher: python manage.py tailwind start
@@ -28,3 +29,14 @@ python manage.py createsuperuser
 Para criar um super usuário que tem todas as permissões para o banco de dados. Ao criar utilizando este comando, já é utilizado criptografia.
 
 Para senha, uma hash criptografada é gerada, e as senhas para autenticação são comparadas com essa hash. Se o banco for invadido, as senhas serão apenas hashs.
+
+---
+
+### Extras e Gerenciamento
+
+**Gerenciamento de Dependências (requirements.txt):**
+* **Gerar/Atualizar arquivo:** `pip freeze > requirements.txt` (Rode sempre que instalar uma nova biblioteca).
+* **Instalar pacotes listados:** `pip install -r requirements.txt`
+
+**Configuração Inicial do Tailwind:**
+* Antes de rodar o `tailwind start`, na primeira configuração da máquina, execute: `python manage.py tailwind install`
