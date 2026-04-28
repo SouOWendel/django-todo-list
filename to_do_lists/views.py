@@ -39,3 +39,26 @@ def index(request):
 			return render(request, 'to_do_lists/index.html', context)
 	else:
 		return render(request, 'to_do_lists/index.html')
+
+def concluir(request, id):
+	if request.user.is_authenticated:
+		tarefasTotal = Tarefa.objects.filter(user=request.user)
+		if tarefasTotal is not None:
+			for tarefa in tarefasTotal:
+				if tarefa.id == id:
+					tarefa.concluido = True
+					tarefa.save()
+		return redirect('index')
+	else:
+		return redirect('index')
+
+def excluir(request, id):
+	if request.user.is_authenticated:
+		tarefasTotal = Tarefa.objects.filter(user=request.user)
+		if tarefasTotal is not None:
+			for tarefa in tarefasTotal:
+				if tarefa.id == id: # Id passado para requisição.
+					tarefa.delete()
+		return redirect('index')
+	else:
+		return redirect('index')

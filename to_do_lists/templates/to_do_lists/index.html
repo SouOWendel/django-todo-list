@@ -34,8 +34,8 @@
 				{% for tarefa in tarefasNaoConcluidas %}
 					<div>
 						<span id="">{{ tarefa }}</span>
-						<a href="#" class="">Concluir</a>
-						<a href="#" class="">Excluir</a>
+						<a href="{% url 'concluir' id=tarefa.id %}" class="">Concluir</a>
+						<a href="{% url 'excluir' id=tarefa.id %}" class="">Excluir</a>
 					</div>
 				{% endfor %}
 			{% else %}
@@ -44,7 +44,7 @@
 		</div>
 		<div>
 			{% if tarefasConcluidas %}
-				{% for tarefa in TarefasConcluidas %}
+				{% for tarefa in tarefasConcluidas %}
 					<div>
 						<span id="">{{ tarefa }}</span>
 					</div>
@@ -55,6 +55,6 @@
 		</div>
 	</div>
 	{% else %}
-		<a href="{% url 'index' %}" class="">Clique aqui para criar uma tarefa!</a>
+		<a href="{% url 'register' %}" class="">Clique aqui para criar uma tarefa!</a>
 	{% endif %}
 {% endblock %}
