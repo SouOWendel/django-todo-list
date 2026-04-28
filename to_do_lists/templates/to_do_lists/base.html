@@ -16,10 +16,10 @@
 				<li><a href="{% url 'index' %}">Página Principal</a></li>
 				{% if user.is_authenticated %}
 				<li><a href="{% url 'reset_pass' %}">Alterar Senha</a></li>
-				<li><a href="{% url 'index' %}">Sair</a></li>
+				<li><a href="{% url 'logout_page' %}">Sair</a></li>
 				{% else %}
 				<li><a href="{% url 'register' %}">Registrar</a></li>
-				<li><a href="{% url 'index' %}">Entrar</a></li>
+				<li><a href="{% url 'login_page' %}">Entrar</a></li>
 				{% endif %}
 			</ul>
 		</header>

@@ -1,0 +1,27 @@
+{% extends "to_do_lists/base.html" %}
+
+{% block content %}
+
+<div>
+	<form method="post">
+		{% csrf_token %}
+
+		{% if form.errors %}
+			{% for field, errors in form.errors.items %}
+				<p>{{ field }}: {{ errors|join:", " }}</p>
+			{% endfor %}
+		{% endif %}
+
+		<div class="">
+				<label for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
+				{{ form.username }}
+		</div>
+		<div class="">
+				<label for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
+				{{ form.password }}
+		</div>
+		<button type="submit">Entrar</button>
+	</form>
+</div>
+
+{% endblock %}

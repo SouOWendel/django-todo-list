@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('to_do_lists.urls')), # Junta os urls.py deste com o do to_do_lists.
     path('register/', include('register.urls')), # Junta os urls.py register/ com os do app register.
+		path('authenticated/', include('authenticated.urls')), # Junta os urls.py authenticated/ com os do app authenticated.
 ]
 
 if settings.DEBUG:
