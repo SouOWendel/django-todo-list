@@ -20,7 +20,8 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('to_do_lists.urls')),
+    path('', include('to_do_lists.urls')), # Junta os urls.py deste com o do to_do_lists.
+    path('register/', include('register.urls')), # Junta os urls.py register/ com os do app register.
 ]
 
 if settings.DEBUG:

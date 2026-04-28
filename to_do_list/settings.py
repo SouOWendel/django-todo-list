@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'to_do_lists',
 		'tailwind',
 		'theme',
+    'register',
 ]
 
 if DEBUG:
